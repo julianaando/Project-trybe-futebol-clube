@@ -1,6 +1,4 @@
-import IMatches from './IMatches';
-import { ICRUDModelReader } from '../ICRUDModel';
+import { IMatches } from './IMatches';
+import { ICRUDModel } from '../ICRUDModel';
 
-export interface IMatchModel extends ICRUDModelReader<IMatches> {
-  findByProgress(inProgress: boolean): Promise<IMatches[]>;
-}
+export type IMatchModel = ICRUDModel<IMatches>;

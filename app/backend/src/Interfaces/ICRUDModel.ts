@@ -1,7 +1,7 @@
 import { ID } from './index';
 
 export interface ICRUDModelCreator<T> {
-  create(data: Partial<T>): Promise<T>,
+  create(match: Partial<T>): Promise<T>,
 }
 
 export interface ICRUDModelReader<T> {
@@ -9,8 +9,13 @@ export interface ICRUDModelReader<T> {
   findById(id: ID): Promise<T | null>,
 }
 
+export interface ICRUDModelInProgress<T> {
+  findByProgress(inProgress: boolean): Promise<T[]>,
+}
+
 export interface ICRUDModelUpdater<T> {
-  update(id: ID, data: Partial<T>): Promise<T | null>,
+  finish(id: ID): Promise<T | null>,
+  update(id: ID, homeTeamGoals: ID, awayTeamGoals: ID): Promise<T | null>,
 }
 
 export interface ICRUDModelDeleter {
@@ -19,4 +24,4 @@ export interface ICRUDModelDeleter {
 
 export interface ICRUDModel<T>
   extends ICRUDModelCreator<T>, ICRUDModelReader<T>, ICRUDModelUpdater<T>,
-  ICRUDModelDeleter { }
+  ICRUDModelInProgress<T> { }
