@@ -18,6 +18,10 @@ export interface ICRUDModelUpdater<T> {
   update(id: ID, homeTeamGoals: ID, awayTeamGoals: ID): Promise<T | null>,
 }
 
+export interface ICRUDModelEmail<T> extends ICRUDModelReader<T> {
+  findByEmail(email: string): Promise<T | null>,
+}
+
 export interface ICRUDModelDeleter {
   delete(id: ID): Promise<number>,
 }

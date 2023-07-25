@@ -1,7 +1,11 @@
-export default interface IUsers{
-  id: number;
-  username: string;
-  role: string;
+import { Identifiable } from '..';
+
+export interface ILogin {
   email: string;
   password: string;
+}
+
+export interface IUsers extends Identifiable, ILogin {
+  username: string,
+  role: string,
 }
