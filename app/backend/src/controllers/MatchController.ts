@@ -30,6 +30,9 @@ export default class MatchController {
   public async updateMatch(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const { homeTeamGoals, awayTeamGoals } = req.body;
+    if (homeTeamGoals === undefined || awayTeamGoals === undefined) {
+      return res.status(400).json({ message: 'Missing parameters' });
+    }
     const { status, data } = await
     this.matchService.updateMatch(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
     if (status !== 'SUCCESSFUL') {

@@ -24,6 +24,12 @@ describe('Testes do endpoint /teams', () => {
     expect(status).to.be.eq(200);
     expect(body).to.be.deep.eq(team);
   });
+  it ('Retorna erro 404 quando o time não existe', async () => {
+    sinon.stub(SequelizeTeam, 'findOne').resolves(null as any);
+    const { status, body } = await chai.request(app).get('/teams/167');
+    expect(status).to.be.eq(404);
+    expect(body).to.be.deep.eq({ message: 'Team not found' });
+  });
 
   afterEach(function() { sinon.restore() });
 });
