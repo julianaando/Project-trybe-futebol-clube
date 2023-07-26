@@ -7,9 +7,17 @@ const user = new UserController();
 
 const router = Router();
 
-router.post('/', ValidationLogin.validateLogin, (req, res) => user.login(req, res));
+router.post(
+  '/',
+  ValidationLogin.validateLogin,
+  (req, res) => user.login(req, res),
+);
 
-router.get('/role', ValidationToken.validateToken, (req, res) => user.getUserRole(req, res));
+router.get(
+  '/role',
+  ValidationToken.validateToken,
+  (req, res) => user.getUserRole(req, res),
+);
 
 router.get('/', (req, res) => user.getAllUsers(req, res));
 
