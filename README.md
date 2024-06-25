@@ -1,4 +1,4 @@
-## Projeto Trybe Futebol Clube 🌌
+## Projeto Trybe Futebol Clube ⚽
 ---
 #### ⏳ Desenvolvido durante o módulo Back-end do curso de Desenvolvimento Web Full Stack na [Trybe](https://www.betrybe.com/)
 
